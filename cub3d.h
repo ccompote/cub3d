@@ -6,7 +6,7 @@
 /*   By: ccompote <ccompote@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:54:34 by ccompote          #+#    #+#             */
-/*   Updated: 2023/04/09 16:42:41 by ccompote         ###   ########.fr       */
+/*   Updated: 2023/04/09 18:35:19 by ccompote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+# define STEP 32
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -31,7 +32,15 @@ typedef struct struct_s
 	char 			**map;
 	int				width;
 	int				height;
-
+	mlx_image_t		*south;
+	mlx_texture_t	*south_tx;
+	mlx_image_t		*north;
+	mlx_texture_t	*north_tx;
+	mlx_image_t		*east;
+	mlx_texture_t	*east_tx;
+	mlx_image_t		*west;
+	mlx_texture_t	*west_tx;
+	mlx_t			*mlx;
 }	t_cub;
 
 
