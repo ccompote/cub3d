@@ -6,7 +6,7 @@
 /*   By: ccompote <ccompote@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:27:48 by ccompote          #+#    #+#             */
-/*   Updated: 2023/04/09 16:50:21 by ccompote         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:34:39 by ccompote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ int main(int argc, char **argv)
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
-	t_cub zop;
+	t_cub3d zop;
 
-	if (!check_arg(argc, argv) || checker_2(&zop, argv))
+	// if (!check_arg(argc, argv) || checker_2(&zop, argv))
+	if (!check_arg(argc, argv))
 		return (0);
-	create_map(zop.fd, &zop, argv);
-	print_arg(zop.map);
+	read_file(&zop, argv);
+	// print_arg(zop.map);
 	// if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 	// {
 	// 	puts(mlx_strerror(mlx_errno));

@@ -6,7 +6,7 @@
 /*   By: ccompote <ccompote@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 16:36:12 by ccompote          #+#    #+#             */
-/*   Updated: 2023/04/09 16:37:10 by ccompote         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:14:06 by ccompote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ int	check_arg(int argc, char **argv)
 	return (1);
 }
 
-int	checker_2(t_cub *zop, char **argv)
-{
-	zop->fd = open(argv[1], O_RDONLY);
-	if (zop->fd == -1)
-	{
-		ft_putstr_fd("Map file not readable\n", 1);
-		close(zop->fd);
-		return (1);
-	}
-	if (!map_lines(zop->fd, zop))
-	{
-		ft_putstr_fd("Error\nWrong map\n", 1);
-		close(zop->fd);
-		return (1);
-	}
-	close(zop->fd);
-	return (0);
-}
+// int	checker_2(t_cub3d *zop, char **argv)
+// {
+// 	zop->fd = open(argv[1], O_RDONLY);
+// 	if (zop->fd == -1)
+// 	{
+// 		ft_putstr_fd("Map file not readable\n", 1);
+// 		close(zop->fd);
+// 		return (1);
+// 	}
+// 	if (!map_lines(zop->fd, zop))
+// 	{
+// 		ft_putstr_fd("Error\nWrong map\n", 1);
+// 		close(zop->fd);
+// 		return (1);
+// 	}
+// 	close(zop->fd);
+// 	return (0);
+// }
