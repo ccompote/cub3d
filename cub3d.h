@@ -6,7 +6,7 @@
 /*   By: ccompote <ccompote@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:54:34 by ccompote          #+#    #+#             */
-/*   Updated: 2023/04/10 15:35:54 by ccompote         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:03:23 by ccompote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
-# define STEP 32
+#define WIDTH 512
+#define HEIGHT 512
+#define STEP 0.09f
+#define TURN_ANGLE 0.10f
+#define RTSTEP 0.001f
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-
+# include <math.h>
 #include <stdbool.h>
 #include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
+
+typedef enum e_mv_dir{not_set = 0, up, dw, lf, rt, rot_lf, rot_rt} mv_dir;
 
 typedef struct s_player
 {
@@ -36,30 +42,40 @@ typedef struct s_player
 typedef struct s_map
 {
     int     rows;
-    int     columns;
+	int		column;
     char    **ar_map;
+    int f_color_r;
+	int f_color_g;
+	int f_color_b;
+	int c_color_r;
+	int c_color_g;
+	int c_color_b;
+	int f_color;
+	int c_color;
+	char			*north_path;
+	char			*south_path;
+	char			*west_path;
+	char			*east_path;
+    mlx_texture_t	*NO;
+	mlx_texture_t	*SO;
+	mlx_texture_t	*WE;
+	mlx_texture_t	*EA;
 } t_map;
 
 typedef struct s_cub3D
 {
-    mlx_t       *mlx;
-    t_map       *c_map;
-    t_player    *pl_pos;
-    mlx_image_t *cur_img;
-    mlx_image_t *old_img;
-	char		**map_file;
-	int			file_rows;
-
+    mlx_t           *mlx;
+    t_map           *c_map;
+    t_player        *pl_pos;
+    mlx_image_t     *cur_img;
+	mlx_image_t     *image;
+	char		    **map_file;
+	int			    file_rows;
+	float           view_angle;
 	int				fd;
-	mlx_image_t		*south;
-	mlx_texture_t	*south_tx;
-	mlx_image_t		*north;
-	mlx_texture_t	*north_tx;
-	mlx_image_t		*east;
-	mlx_texture_t	*east_tx;
-	mlx_image_t		*west;
-	mlx_texture_t	*west_tx;
-
+    char	        **tmp_map;
+    mlx_texture_t	*minone;
+	mlx_texture_t	*mintwo;
 } t_cub3d;
 
 int	read_file(t_cub3d *zop, char **argv);

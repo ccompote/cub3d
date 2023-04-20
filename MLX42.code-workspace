@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "MLX42",
+			"path": "../cub3d3/MLX42"
+		},
+		{
+			"name": "cub3d",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
